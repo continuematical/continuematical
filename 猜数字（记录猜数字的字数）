@@ -1,0 +1,43 @@
+#include<time.h>
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 10
+int main()
+{
+	int stage = 0;
+	int no;
+	int i = 0;
+	int num[MAX];
+	srand(time(NULL));
+	int ans = rand();
+	printf("游戏开始\n");
+	do
+	{
+		printf("你还有%d次机会\n",MAX-stage);
+		scanf_s("%d", &no);
+		num[stage++] = no;
+		if (no > ans)
+		{
+			printf("数字大了\n");
+		}
+		else if (no < ans)
+		{
+			printf("数字小了\n");
+		}
+	} while (no != ans && stage < MAX);
+	if (no != ans)
+	{
+		printf("很遗憾，正确答案是%d\n", ans);
+	}
+	else
+	{
+		printf("恭喜你回答正确\n");
+		printf("您用了%d次机会\n", stage);
+	}
+	puts("输出记录");
+	for (i = 0; i < stage ;i++)
+	{
+		printf("%d:%d\n",i+1, num[i]);
+	}
+	return 0;
+}
